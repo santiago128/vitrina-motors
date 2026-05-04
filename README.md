@@ -22,16 +22,21 @@ Sitio web profesional para la venta de vehículos usados, con catálogo editable
 
 ## 📁 Estructura del proyecto
 
+```
 vitrina-motors/
 ├── app/
-│   ├── page.tsx                    # Home
+│   ├── page.tsx                     # Home
 │   ├── catalogo/
-│   │   ├── page.tsx                # Listado de vehículos
-│   │   └── [slug]/page.tsx         # Detalle del vehículo
-│   ├── contacto/page.tsx           # Formulario de contacto
-│   ├── studio/[[...tool]]/page.tsx # Panel Sanity Studio
+│   │   ├── page.tsx                 # Listado de vehículos
+│   │   └── [slug]/
+│   │       └── page.tsx             # Detalle del vehículo
+│   ├── contacto/
+│   │   └── page.tsx                 # Formulario de contacto
+│   ├── studio/
+│   │   └── [[...tool]]/
+│   │       └── page.tsx             # Panel Sanity Studio
 │   ├── globals.css
-│   └── layout.tsx                  # Layout global
+│   └── layout.tsx                   # Layout global
 ├── components/
 │   ├── layout/
 │   │   ├── Navbar.tsx
@@ -42,17 +47,18 @@ vitrina-motors/
 │   └── ui/
 │       └── WhatsAppButton.tsx
 ├── lib/
-│   └── queries.ts                  # GROQ queries para Sanity
+│   └── queries.ts
 ├── sanity/
 │   ├── lib/
-│   │   ├── client.ts               # Conexión Sanity
-│   │   └── image.ts                # Helper imágenes
+│   │   ├── client.ts
+│   │   └── image.ts
 │   └── schemaTypes/
 │       ├── index.ts
-│       └── vehicle.ts              # Schema del vehículo
-├── sanity.config.ts                # Configuración Sanity Studio
-├── .npmrc                          # legacy-peer-deps=true
+│       └── vehicle.ts
+├── sanity.config.ts
+├── .npmrc
 └── package.json
+```
 
 ---
 
