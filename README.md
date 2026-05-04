@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚗 Vitrina Motors
 
-## Getting Started
+Sitio web profesional para la venta de vehículos usados, con catálogo editable por el cliente sin necesidad de conocimientos técnicos.
 
-First, run the development server:
+🌐 **Sitio en producción:** https://vitrina-motors-three.vercel.app  
+🎛️ **CMS (Sanity Studio):** https://vitrina-motors-three.vercel.app/studio  
+📦 **Repositorio:** https://github.com/santiago128/vitrina-motors
+
+---
+
+## 🛠️ Stack tecnológico
+
+| Capa | Tecnología |
+|---|---|
+| Framework | Next.js 16 |
+| Estilos | Tailwind CSS v4 |
+| CMS | Sanity.io 3.99 |
+| Lenguaje | TypeScript |
+| Hosting | Vercel |
+
+---
+
+## 📁 Estructura del proyecto
+
+vitrina-motors/
+├── app/
+│   ├── page.tsx                    # Home
+│   ├── catalogo/
+│   │   ├── page.tsx                # Listado de vehículos
+│   │   └── [slug]/page.tsx         # Detalle del vehículo
+│   ├── contacto/page.tsx           # Formulario de contacto
+│   ├── studio/[[...tool]]/page.tsx # Panel Sanity Studio
+│   ├── globals.css
+│   └── layout.tsx                  # Layout global
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   ├── vehicles/
+│   │   ├── VehicleCard.tsx
+│   │   └── VehicleGrid.tsx
+│   └── ui/
+│       └── WhatsAppButton.tsx
+├── lib/
+│   └── queries.ts                  # GROQ queries para Sanity
+├── sanity/
+│   ├── lib/
+│   │   ├── client.ts               # Conexión Sanity
+│   │   └── image.ts                # Helper imágenes
+│   └── schemaTypes/
+│       ├── index.ts
+│       └── vehicle.ts              # Schema del vehículo
+├── sanity.config.ts                # Configuración Sanity Studio
+├── .npmrc                          # legacy-peer-deps=true
+└── package.json
+
+---
+
+## 🚀 Correr el proyecto localmente
+
+### Requisitos
+- Node.js 18+
+- Cuenta en [Sanity.io](https://sanity.io)
+
+### Instalación
 
 ```bash
+# Clonar el repositorio
+git clone https://github.com/santiago128/vitrina-motors
+cd vitrina-motors
+
+# Instalar dependencias
+npm install --legacy-peer-deps
+
+# Correr en desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir en el navegador:
+- **Sitio:** http://localhost:3000
+- **Studio:** http://localhost:3000/studio
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 Variables de entorno
 
-## Learn More
+No se requieren variables de entorno. El Project ID de Sanity está configurado directamente en `sanity/lib/client.ts` y `sanity.config.ts`.
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📋 CORS requerido en Sanity
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Agregar en [sanity.io/manage](https://sanity.io/manage/project/2dupyrtu/api):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Origen | Credenciales |
+|---|---|
+| http://localhost:3000 | Permitidas |
+| https://vitrina-motors-three.vercel.app | Permitidas |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ⚙️ Deploy en Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Conectar el repo a Vercel
+2. En **Settings → Build and Deployment**, configurar:
+   - **Install Command:** `npm install --legacy-peer-deps`
+3. Deploy automático con cada push a `main`
+
+---
+
+## 📝 Convención de commits
+
+| Prefijo | Uso |
+|---|---|
+| `feat:` | Nueva funcionalidad |
+| `fix:` | Corrección de bug |
+| `chore:` | Configuración o mantenimiento |
+| `style:` | Cambios visuales sin lógica |
+
+---
+
+## ✅ Funcionalidades
+
+- [x] Home con Hero, vehículos destacados y sección de beneficios
+- [x] Catálogo con grid responsive
+- [x] Detalle de vehículo con galería y botón WhatsApp
+- [x] CMS editable (Sanity Studio) en `/studio`
+- [x] Formulario de contacto
+- [x] Botón WhatsApp flotante
+- [x] Deploy automático en Vercel
+- [ ] Envío real del formulario (Resend/Formspree)
+- [ ] Filtros en el catálogo
+- [ ] SEO dinámico por vehículo
